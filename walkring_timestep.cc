@@ -43,20 +43,22 @@ void walkring_timestep(rarray<int,1>& walkerpositions, int N, double prob)
     // Cycle through all of the positions
     for (int i=0; i<Z; i++){
     	rand_num = uniformdouble(engine);
-
-	    if(rand_num >= 0.0 && rand_num < prob){ 				// Move Left (decrement)
-			if(walkerpositions[i] == 0)								// Loop around to the other side
-				walkerpositions[i] = N-1;
+		
+		// Move Left (decrement)
+	    if(rand_num >= 0.0 && rand_num < prob){ 		
+			if(walkerpositions[i] == 0)									
+				walkerpositions[i] = N-1;		// Loop around to the other side
 			else
 				walkerpositions[i]--;
 		}
-    	else if (rand_num >= prob && rand_num < 2*prob){		// Move Right (increment)
-    		if(walkerpositions[i] == N-1)							// Loop around to the other side
-    			walkerpositions[i] = 0;
+		// Move Right (increment)
+    	else if (rand_num >= prob && rand_num < 2*prob){
+    		if(walkerpositions[i] == N-1)							
+    			walkerpositions[i] = 0;    		// Loop around to the other side		
     		else
     			walkerpositions[i]++;
     	}
-        														// Else remain in current position        
+		// Else, remain in current position        
     }
 }
 
