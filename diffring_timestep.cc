@@ -11,11 +11,14 @@
 // perform a single time step for the random walkers
 void diffring_timestep(const rarray<double,2>& F, rarray<double,1>& P)
 {
-    ////////////////////////////////////////////////
-    //                                            //
-    // IMPLEMENT THIS AS PART OF YOUR ASSIGNMENT! //
-    //                                            //
-    ////////////////////////////////////////////////
+    int N = F.extent(1);            // Number of points in the x dimension
+    double a = 1.0;
+    double b = 0.0;
+
+    rarray<double,1> P_prev = P.copy();    
+
+    // P = a*F*P_prev + b*P_prev
+    cblas_dgemv(CblasRowMajor, CblasNoTrans, N, N, a, F, N, P_prev, 1, b, P_prev, 1);
 }
 
 // fill the matrix needed in perform_time_step
