@@ -6,6 +6,7 @@
 
 #include "walkring_timestep.h"
 #include <random>
+#include <iostream>
 
 // Perform a single time step for the random walkers
 //
@@ -43,7 +44,7 @@ void walkring_timestep(rarray<int,1>& walkerpositions, int N, double prob)
 	walkerpositions.fill(0);
 
     static std::mt19937 engine(seed);
-    std::uniform_int_distribution<int> uniformint(0, total);
+    std::uniform_int_distribution<int> uniformint(0, 1);
 
     // Cycle through all of the positions
     for (int i=0; i<N; i++){
