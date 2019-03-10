@@ -44,30 +44,33 @@ void walkring_timestep(rarray<int,1>& walkerpositions, int N, double prob)
 	walkerpositions.fill(0);
 
     static std::mt19937 engine(seed);
-    std::uniform_int_distribution<int> uniformint(0, 1);
+    std::uniform_real_distribution<double> uniformdouble(0.0, 1.0);
 
     // Cycle through all of the positions
     for (int i=0; i<N; i++){
 
         // Go through each of the walkers at each position
-        for(int k=0; k<walkerpositions_old[i]; k++){
-			rand_num = uniformint(engine);
+        std::cout << walkerpositions_old[i] << std::endl;
+        if(walkerpositions_old[i] > 0){
+	        for(int k=0; k<walkerpositions_old[i]; k++){
+				rand_num = uniformdouble(engine);
 
-        	if(rand_num >= 0.0 && rand_num < prob){ 			// Move Left
-        		if(k == 0)											// Loop around to the other side
-        			walkerpositions[N-1]++;
-        		else
-        			walkerpositions[i-1]++;
-        	}
-        	else if (rand_num >= prob && rand_num < 2*prob){	// Move Right
-        		if(k == N-1)											// Loop around to the other side
-        			walkerpositions[0]++;
-        		else
-        			walkerpositions[i+1]++;
-        	}
-        	else {												// Remain in current position
-    			walkerpositions[i]++;
-        	}
+	        	if(rand_num >= 0.0 && rand_num < prob){ 			// Move Left
+	        		if(k == 0)											// Loop around to the other side
+	        			walkerpositions[N-1]++;
+	        		else
+	        			walkerpositions[i-1]++;
+	        	}
+	        	else if (rand_num >= prob && rand_num < 2*prob){	// Move Right
+	        		if(k == N-1)											// Loop around to the other side
+	        			walkerpositions[0]++;
+	        		else
+	        			walkerpositions[i+1]++;
+	        	}
+	        	else {												// Remain in current position
+	    			walkerpositions[i]++;
+	        	}
+    		}	
     	}
     }
 
