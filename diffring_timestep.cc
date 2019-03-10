@@ -22,7 +22,7 @@ void diffring_timestep(const rarray<double,2>& F, rarray<double,1>& P)
 void diffring_fill_timestep_matrix(rarray<double,2>& F, double D, double dt, double dx)
 {
     int N = F.extent(1);            // Number of points in the x dimension
-    double alpha = D*dt/(dx^2);     // timestepping coefficient
+    double alpha = D*dt/(dx^2.0);     // timestepping coefficient
 
     // Initialize F as 0s
     F.fill(0.0);
