@@ -71,7 +71,7 @@ void walkring_timestep(rarray<int,1>& walkerpositions, int N, double prob)
     	}
     }
 
-    Z_new = walkerpositions.size();
+    int Z_new = walkerpositions.size();
     // Make sure the total amount of walkers remains unchanged
     std::cout << Z_old << ' ' << Z_new << std::endl;
 }
