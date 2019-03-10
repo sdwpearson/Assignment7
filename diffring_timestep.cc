@@ -18,7 +18,7 @@ void diffring_timestep(const rarray<double,2>& F, rarray<double,1>& P)
     rarray<double,1> P_prev = P.copy();    
 
     // P = a*F*P_prev + b*P_prev
-    cblas_dgemv(CblasRowMajor, CblasNoTrans, N, N, a, F, N, P_prev, 1, b, P_prev, 1);
+    cblas_dgemv(CblasRowMajor, CblasNoTrans, N, N, a, F.data(), N, P_prev.data(), 1, b, P_prev.data(), 1);
 }
 
 // fill the matrix needed in perform_time_step
