@@ -7,7 +7,7 @@ BLAS_INC?=.
 BLAS_LIB?=.
 
 CXX=g++
-CXXFLAGS=-O3 -g -march=native -std=c++11 -I${BLAS_INC}
+CXXFLAGS=-O0 -g -march=native -std=c++11 -I${BLAS_INC}
 LDFLAGS=-g -L${BLAS_LIB}
 LDLIBS=-lopenblas
 LD=${CXX}

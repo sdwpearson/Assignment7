@@ -57,16 +57,16 @@ void walkring_timestep(rarray<int,1>& walkerpositions, int N, double prob)
         		if(k == 0)											// Loop around to the other side
         			walkerpositions[N-1]++;
         		else
-        			walkerpositions[k-1]++;
+        			walkerpositions[i-1]++;
         	}
         	else if (rand_num >= prob && rand_num < 2*prob){	// Move Right
         		if(k == N-1)											// Loop around to the other side
         			walkerpositions[0]++;
         		else
-        			walkerpositions[k+1]++;
+        			walkerpositions[i+1]++;
         	}
         	else {												// Remain in current position
-    			walkerpositions[k]++;
+    			walkerpositions[i]++;
         	}
     	}
     }
