@@ -8,6 +8,7 @@
 
 #include <fstream>
 #include <rarray>
+#include <rarrayio>
 #include "diffring_output.h"
 #include "diffring_timestep.h"
 #include "parameters.h"
@@ -44,6 +45,7 @@ int main(int argc, char *argv[])
   // Time evolution matrix
   rarray<double,2> F(N, N);
   diffring_fill_timestep_matrix(F, D, dt, dx);
+  std::cout << F << std::endl;
   // Setup initial time
   double time = 0.0;    
 
